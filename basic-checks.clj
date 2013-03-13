@@ -4,5 +4,7 @@
 	    0))
 
 (defn comma-check [xs]
- (map (fn [x] (has-letter "," x)) 
- 	(re-seq #"\[[\:\]\[\w\p{Space}(?!\,)]+\]" xs)))
+ (into (map (fn [x] (has-letter "," x)) 
+ 	   		(re-seq #"\[[\:\]\[\w\p{Space}\,]+\]" xs))
+       (map (fn [x] (has-letter "," x)) 
+ 	   		(re-seq #"\([\:\]\)\w\p{Space}\,]+\)" xs))))
