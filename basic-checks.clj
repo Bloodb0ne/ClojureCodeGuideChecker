@@ -19,12 +19,13 @@
 ;; good
 (defn foo [x]
   (bar x))
-
+(derper? foo
+  (bar x))
 ;; bad
 (defn foo
   [x] (bar x))")
 
 (def def-test 
-	(re-seq #"\(defn[\:\w\[\]\(\p{Space})]+\)$" test-string-def))
+	(re-seq #"\(defn[\:\w\[\]\(\p{Space})]+" test-string-def))
 
-(first def-test)
+(rest def-test)
